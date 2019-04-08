@@ -1,0 +1,58 @@
+<Application x:Class="ControlTemplateTest.App" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:ControlTemplateTest" StartupUri="MainWindow.xaml" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" d1p1:Ignorable="d" 
+             xmlns:d1p1="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:ControlTemplateTest.ViewModel" >
+    <Application.Resources>
+
+        <vm:ViewModelLocator x:Key="Locator" d:IsDataSource="True"/>
+
+        <DataTemplate x:Key="port">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="5"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="{Binding Name}" TextAlignment="Right" FontSize="20" Height="34" VerticalAlignment="Bottom"  HorizontalAlignment="Right"/>
+                <TextBox Text="{Binding PortNumber}" VerticalAlignment="Center" FontSize="20" Grid.Column="2" Width="140" Height="34" TextAlignment="Center"/>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="ShowSpeeed" >
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <!--<ColumnDefinition Width="5"/>-->
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="{Binding Name}" Width="130" TextAlignment="Right" FontSize="20" Height="32" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+                <TextBox Text="{Binding Speed}"  FontSize="20" Grid.Column="1" Width="140" Height="30"  TextAlignment="Center" />
+                <TextBlock Text="r/min"  FontSize="20" Grid.Column="2" Width="55" Height="30" TextAlignment="Left" VerticalAlignment="Bottom" HorizontalAlignment="Left" />
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="portSelection" >
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="1"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="{Binding Name}"  TextAlignment="Right" FontWeight="Bold" FontSize="20" Height="36" VerticalAlignment="Bottom"  HorizontalAlignment="Right"/>
+                <ComboBox Margin="5" Grid.Column="2" ItemsSource="{Binding Options}" SelectedIndex="0" Width="140" HorizontalAlignment="Right" FontWeight="Bold" FontSize="20"/>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="grapSelection" >
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="15"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="{Binding Name}"  Grid.Row="1" Width="130" TextAlignment="Center" FontSize="20" FontWeight="Bold" Height="36" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+                <ComboBox Margin="5,0" Grid.Row="2" SelectedIndex="0" ItemsSource="{Binding Options}" FontWeight="Bold" FontSize="20" />
+            </Grid>
+        </DataTemplate>
+    </Application.Resources>
+</Application>
